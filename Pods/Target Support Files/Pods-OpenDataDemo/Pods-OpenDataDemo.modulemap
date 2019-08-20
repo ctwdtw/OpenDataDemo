@@ -1,0 +1,6 @@
+framework module Pods_OpenDataDemo {
+  umbrella header "Pods-OpenDataDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}
