@@ -1,0 +1,13 @@
+/* 
+  API.strings
+  janitorapp
+
+  Created by Paul Lee on 2019/4/16.
+  Copyright © 2019 Paul Lee. All rights reserved.
+*/
+
+//network error
+"noResponse" = "伺服器無回應";
+"noData" = "伺服器回傳資料為空";
+"unexpectedJSON" = "伺服器回傳非預期的 JSON 資料";
+"unexpectedError" = "發生未預期的錯誤";
