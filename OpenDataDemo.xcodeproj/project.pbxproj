@@ -34,6 +34,7 @@
 		6358C330230B96720067AA87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6358C32F230B96720067AA87 /* Assets.xcassets */; };
 		6358C333230B96720067AA87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6358C331230B96720067AA87 /* LaunchScreen.storyboard */; };
 		6358C33E230B96720067AA87 /* ListPlantViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6358C33D230B96720067AA87 /* ListPlantViewModelTests.swift */; };
+		63767006230E632100F3157F /* StrechyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63767005230E632100F3157F /* StrechyVC.xib */; };
 		63A2C468230B997700799CF3 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2C467230B997700799CF3 /* R.generated.swift */; };
 		63A2C477230B9A7300799CF3 /* APIClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A2C46E230B9A7300799CF3 /* APIClient.framework */; };
 		63A2C47C230B9A7300799CF3 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2C47B230B9A7300799CF3 /* APIClientTests.swift */; };
@@ -66,6 +67,8 @@
 		63A2C4D3230BC9F400799CF3 /* PlantValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2C4D2230BC9F400799CF3 /* PlantValue.swift */; };
 		63A2C4D6230BCA7000799CF3 /* PlantImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2C4D5230BCA7000799CF3 /* PlantImageRequest.swift */; };
 		63A2C4D8230BCC0E00799CF3 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2C4D7230BCC0E00799CF3 /* Plant.swift */; };
+		63B32025230E57E1005F300F /* StrechyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B32023230E57E1005F300F /* StrechyVC.swift */; };
+		63B3202E230E5B5A005F300F /* UIVIew+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B3202A230E5B5A005F300F /* UIVIew+Layout.swift */; };
 		CA46E55B94915BDB10476B30 /* Pods_OpenDataDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270B7F91228F1A7AD6DA6E80 /* Pods_OpenDataDemo.framework */; };
 		DD1C840FB160EC52850D116F /* libPods-OpenDataDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA95D650C6862114C762B84 /* libPods-OpenDataDemoTests.a */; };
 /* End PBXBuildFile section */
@@ -128,6 +131,7 @@
 		6358C339230B96720067AA87 /* OpenDataDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenDataDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6358C33D230B96720067AA87 /* ListPlantViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPlantViewModelTests.swift; sourceTree = "<group>"; };
 		6358C33F230B96720067AA87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63767005230E632100F3157F /* StrechyVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StrechyVC.xib; sourceTree = "<group>"; };
 		63A2C467230B997700799CF3 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		63A2C46E230B9A7300799CF3 /* APIClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = APIClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63A2C470230B9A7300799CF3 /* APIClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
@@ -157,6 +161,8 @@
 		63A2C4D2230BC9F400799CF3 /* PlantValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantValue.swift; sourceTree = "<group>"; };
 		63A2C4D5230BCA7000799CF3 /* PlantImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantImageRequest.swift; sourceTree = "<group>"; };
 		63A2C4D7230BCC0E00799CF3 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
+		63B32023230E57E1005F300F /* StrechyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrechyVC.swift; sourceTree = "<group>"; };
+		63B3202A230E5B5A005F300F /* UIVIew+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIVIew+Layout.swift"; sourceTree = "<group>"; };
 		82CBD908E50EBC2BC607D32F /* Pods-OpenDataDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenDataDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-OpenDataDemoTests/Pods-OpenDataDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		998A97AFBF357993C83946A3 /* Pods-OpenDataDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenDataDemo.release.xcconfig"; path = "Target Support Files/Pods-OpenDataDemo/Pods-OpenDataDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -224,7 +230,6 @@
 			isa = PBXGroup;
 			children = (
 				6358C32C230B96700067AA87 /* Main.storyboard */,
-				6358C32A230B96700067AA87 /* ListPlantsVC.swift */,
 				63019A5C230BF07E00A3D3B6 /* PlantCell.swift */,
 				63019A5D230BF07E00A3D3B6 /* PlantCell.xib */,
 			);
@@ -235,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				63019A60230BF08F00A3D3B6 /* Views */,
+				63B3202F230E61F6005F300F /* ViewControllers */,
 				63019A5B230BF02E00A3D3B6 /* ViewModels */,
 			);
 			path = ListPlants;
@@ -244,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				63226C28230D57CD00E73D42 /* AssetExtractor.swift */,
+				63B3202A230E5B5A005F300F /* UIVIew+Layout.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -357,6 +364,16 @@
 				63A2C4D5230BCA7000799CF3 /* PlantImageRequest.swift */,
 			);
 			path = Plant;
+			sourceTree = "<group>";
+		};
+		63B3202F230E61F6005F300F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6358C32A230B96700067AA87 /* ListPlantsVC.swift */,
+				63B32023230E57E1005F300F /* StrechyVC.swift */,
+				63767005230E632100F3157F /* StrechyVC.xib */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		CAFDB88F89506A834412FCF4 /* Pods */ = {
@@ -578,6 +595,7 @@
 				6358C333230B96720067AA87 /* LaunchScreen.storyboard in Resources */,
 				63019A5F230BF07E00A3D3B6 /* PlantCell.xib in Resources */,
 				6358C330230B96720067AA87 /* Assets.xcassets in Resources */,
+				63767006230E632100F3157F /* StrechyVC.xib in Resources */,
 				6358C32E230B96700067AA87 /* Main.storyboard in Resources */,
 				63019A6A230BF40100A3D3B6 /* API.strings in Resources */,
 			);
@@ -717,6 +735,8 @@
 				63019A67230BF3BE00A3D3B6 /* PlantRequest.swift in Sources */,
 				63019A6F230BF40100A3D3B6 /* Response.swift in Sources */,
 				63019A5E230BF07E00A3D3B6 /* PlantCell.swift in Sources */,
+				63B3202E230E5B5A005F300F /* UIVIew+Layout.swift in Sources */,
+				63B32025230E57E1005F300F /* StrechyVC.swift in Sources */,
 				63019A6C230BF40100A3D3B6 /* APISession.swift in Sources */,
 				63019A69230BF3BE00A3D3B6 /* PlantImageRequest.swift in Sources */,
 				63226C29230D57CD00E73D42 /* AssetExtractor.swift in Sources */,
