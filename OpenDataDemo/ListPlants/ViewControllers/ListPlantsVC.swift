@@ -9,44 +9,176 @@
 import UIKit
 
 protocol ListPlantsDisplayable {
-  func displayLoadPlantsSuccess(idxs: [Int])
-  func displayLoadPlantsFailed(error: Error)
+  func displayInsertPlantsSuccess(idxs: [Int])
+  func displayInsertPlantsFailed(error: Error)
   func displayLoadingIndicator(isLoading: Bool)
 }
 
 class ListPlantsVC: StrechyVＣ, ListPlantsDisplayable {
+  override var minStrechyHeight: CGFloat {
+    return super.minStrechyHeight + AccountHeaderView.maskHeight
+  }
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do any additional setup after loading the view.
-    
+  override var maxStrechyHeight: CGFloat {
+    return (minStrechyHeight - AccountHeaderView.maskHeight) * 3 + AccountHeaderView.maskHeight
+  }
+  
+  override var strechyView: UIView!{
+    didSet{
+      headerView = R.nib.accountHeaderView.firstView(owner: nil)
+      headerView.fill(on: strechyView)
+      
+    }
+  }
+  
+  var headerView: AccountHeaderView!
+  
+  var plantTableView: UITableView! {
+    didSet {
+      plantTableView.fill(on: scrollViewContainer)
+      plantTableView.register(R.nib.plantCell)
+      plantTableView.delegate = self
+      plantTableView.dataSource = self
+    }
+  }
+  
+  private var cellHeights: [IndexPath: CGFloat] = [:]
+  
+  private var listPlantsViewModel: (ListPlantsDisplayLogicBindable & ListPlantsBusinessLogic)!
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    setup()
+  }
+  
+  func setup() {
+    listPlantsViewModel = ListPlantsViewModel(loader: PlantLoader(limit: 20, offset: 0))
   }
   
   override func setupScrollableView() {
-    let textView = UITextView(frame: .zero)
-    textView.fill(on: scrollViewContainer)
-    textView.font = UIFont.systemFont(ofSize: 30)
-    textView.text = "Lorem ipsum dolor sit amet, alii nominavi elaboraret an mea, sint liber iuvaret per ne, mea ei facilis civibus. Tollit perpetua id has, eam doctus cetero electram ex. His torquatos abhorreant vituperatoribus ad. Quas oblique accusamus ei his, has lorem sanctus eu. Nam malorum constituto persequeris te, nam no gubergren voluptaria, clita ornatus cum no. Modus scripserit appellantur ea sea, in per reque luptatum.Lorem ipsum dolor sit amet, alii nominavi elaboraret an mea, sint liber iuvaret per ne, mea ei facilis civibus. Tollit perpetua id has, eam doctus cetero electram ex. His torquatos abhorreant vituperatoribus ad. Quas oblique accusamus ei his, has lorem sanctus eu. Nam malorum constituto persequeris te, nam no gubergren voluptaria, clita ornatus cum no. Modus scripserit appellantur ea sea, in per reque luptatum.Lorem ipsum dolor sit amet, alii nominavi elaboraret an mea, sint liber iuvaret per ne, mea ei facilis civibus. Tollit perpetua id has, eam doctus cetero electram ex. His torquatos abhorreant vituperatoribus ad. Quas oblique accusamus ei his, has lorem sanctus eu. Nam malorum constituto persequeris te, nam no gubergren voluptaria, clita ornatus cum no. Modus scripserit appellantur ea sea, in per reque luptatum.Lorem ipsum dolor sit amet, alii nominavi elaboraret an mea, sint liber iuvaret per ne, mea ei facilis civibus. Tollit perpetua id has, eam doctus cetero electram ex. His torquatos abhorreant vituperatoribus ad. Quas oblique accusamus ei his, has lorem sanctus eu. Nam malorum constituto persequeris te, nam no gubergren voluptaria, clita ornatus cum no. Modus scripserit appellantur ea sea, in per reque luptatum.Lorem ipsum dolor sit amet, alii nominavi elaboraret an mea, sint liber iuvaret per ne, mea ei facilis civibus. Tollit perpetua id has, eam doctus cetero electram ex. His torquatos abhorreant vituperatoribus ad. Quas oblique accusamus ei his, has lorem sanctus eu. Nam malorum constituto persequeris te, nam no gubergren voluptaria, clita ornatus cum no. Modus scripserit appellantur ea sea, in per reque luptatum.Lorem ipsum dolor sit amet, alii nominavi elaboraret an mea, sint liber iuvaret per ne, mea ei facilis civibus. Tollit perpetua id has, eam doctus cetero electram ex. His torquatos abhorreant vituperatoribus ad. Quas oblique accusamus ei his, has lorem sanctus eu. Nam malorum constituto persequeris te, nam no gubergren voluptaria, clita ornatus cum no. Modus scripserit appellantur ea sea, in per reque luptatum.Lorem ipsum dolor sit amet, alii nominavi elaboraret an mea, sint liber iuvaret per ne, mea ei facilis civibus. Tollit perpetua id has, eam doctus cetero electram ex. His torquatos abhorreant vituperatoribus ad. Quas oblique accusamus ei his, has lorem sanctus eu. Nam malorum constituto persequeris te, nam no gubergren voluptaria, clita ornatus cum no. Modus scripserit appellantur ea sea, in per reque luptatum."
-    textView.delegate = self
+    plantTableView = UITableView(frame: .zero)
+    scrollableView = plantTableView
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    self.navigationController?.navigationBar.isHidden = true
+    bindDisplayLogic()
+    listPlantsViewModel.load()
+  }
+  
+  /// bind UI displaylogic of views with ports of related properties on viewModel
+  func bindDisplayLogic() {
+    listPlantsViewModel.onLoadingChange = displayLoadingIndicator(isLoading:)
+    listPlantsViewModel.onInsertingPlantCellViewModels = displayInsertPlantsSuccess(idxs:)
+    listPlantsViewModel.onFailedInsertingPlantCellViewModels = displayInsertPlantsFailed(error:)
+  }
+  
+  //MARK: - UI display logics
+  func displayInsertPlantsSuccess(idxs: [Int]) {
+    let indexPaths = idxs.map { IndexPath(row: $0, section: 0) }
+    plantTableView.insertRows(at: indexPaths, with: .none)
     
   }
   
-  //MARK: - display lgoic
-  func displayLoadPlantsSuccess(idxs: [Int]) {
-    
-  }
-  
-  func displayLoadPlantsFailed(error: Error) {
-    
+  func displayInsertPlantsFailed(error: Error) {
+    print(error.localizedDescription)
   }
   
   func displayLoadingIndicator(isLoading: Bool) {
+    if isLoading {
+      plantTableView.startFooterSpinner()
+      
+    } else {
+      plantTableView.stopFooterSpinner()
+      
+    }
+  }
+  
+  func alphaValue(from height: CGFloat) -> (propValue: CGFloat, inverseValue: CGFloat) {
+    let propValue = (height - minStrechyHeight)/(maxStrechyHeight - minStrechyHeight)
+    let inverseValue = (height - maxStrechyHeight)/(minStrechyHeight - maxStrechyHeight)
+    return (propValue, inverseValue)
+  }
+  
+  //MARK: - Display helpers
+  private func alphaProportional(to height: CGFloat) -> CGFloat {
+    return (height - minStrechyHeight)/(maxStrechyHeight - minStrechyHeight)
+  }
+  
+  private func alphaInversely(to height: CGFloat) -> CGFloat {
+    return (height - maxStrechyHeight)/(minStrechyHeight - maxStrechyHeight)
+  }
+  
+  override func magneticEffect() {
+    super.magneticEffect()
+    
+    UIView.animate(withDuration: 0.3) {
+      let alpha = self.alphaValue(from: self.strechyHeight.constant)
+      self.headerView.setAlpha(alpha.propValue, alpha.inverseValue)
+      
+    }
+  }
+  
+  override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    super.scrollViewDidScroll(scrollView)
+    
+    //alpha
+    let alpha = alphaValue(from: strechyHeight.constant)
+    headerView.setAlpha(alpha.propValue, alpha.inverseValue)
+    
+    //loading
+//    if let tableView = scrollView as? UITableView, tableView.isScrolledToEnd {
+//      listPlantsViewModel.load()
+//    }
     
   }
-
-
+  
 }
 
-extension ListPlantsVC: UITextViewDelegate {
+//MARK: - UITableVeiw DataSource
+extension ListPlantsVC: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return listPlantsViewModel.plantCellViewModels.count
+  }
   
+  func isScrollNearEnd(indexPath: IndexPath) -> Bool {
+    return indexPath.row == listPlantsViewModel.plantCellViewModels.count - 5
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.plantCell, for: indexPath)!
+    let viewModel = listPlantsViewModel.plantCellViewModels[indexPath.row]
+    
+    cell.bindDisplayLogic(viewModel)
+    cell.display(viewModel)
+    cell.plantCellViewModel = viewModel
+    listPlantsViewModel.loadImage(for: viewModel)
+    
+    //loading
+    if isScrollNearEnd(indexPath: indexPath) {
+      listPlantsViewModel.load()
+    }
+    
+    return cell
+    
+  }
+}
+
+//MARK: - UITableVeiw Delegate
+extension ListPlantsVC: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    cellHeights[indexPath] = cell.frame.size.height
+  }
+  
+  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    if let height = cellHeights[indexPath] {
+      return height
+      
+    } else {
+      return 0
+      
+    }
+  }
 }

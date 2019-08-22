@@ -35,6 +35,11 @@
 		6358C333230B96720067AA87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6358C331230B96720067AA87 /* LaunchScreen.storyboard */; };
 		6358C33E230B96720067AA87 /* ListPlantViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6358C33D230B96720067AA87 /* ListPlantViewModelTests.swift */; };
 		63767006230E632100F3157F /* StrechyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63767005230E632100F3157F /* StrechyVC.xib */; };
+		6376700A230E75B100F3157F /* UITableView+FooterSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63767007230E75B100F3157F /* UITableView+FooterSpinner.swift */; };
+		6376700B230E75B100F3157F /* UIColor+DesignPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63767008230E75B100F3157F /* UIColor+DesignPalette.swift */; };
+		6376700C230E75B100F3157F /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63767009230E75B100F3157F /* UIColor+RGB.swift */; };
+		6376700F230E75DC00F3157F /* AccountHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6376700D230E75DC00F3157F /* AccountHeaderView.swift */; };
+		63767010230E75DC00F3157F /* AccountHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6376700E230E75DC00F3157F /* AccountHeaderView.xib */; };
 		63A2C468230B997700799CF3 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2C467230B997700799CF3 /* R.generated.swift */; };
 		63A2C477230B9A7300799CF3 /* APIClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A2C46E230B9A7300799CF3 /* APIClient.framework */; };
 		63A2C47C230B9A7300799CF3 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2C47B230B9A7300799CF3 /* APIClientTests.swift */; };
@@ -132,6 +137,11 @@
 		6358C33D230B96720067AA87 /* ListPlantViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPlantViewModelTests.swift; sourceTree = "<group>"; };
 		6358C33F230B96720067AA87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63767005230E632100F3157F /* StrechyVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StrechyVC.xib; sourceTree = "<group>"; };
+		63767007230E75B100F3157F /* UITableView+FooterSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+FooterSpinner.swift"; sourceTree = "<group>"; };
+		63767008230E75B100F3157F /* UIColor+DesignPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+DesignPalette.swift"; sourceTree = "<group>"; };
+		63767009230E75B100F3157F /* UIColor+RGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
+		6376700D230E75DC00F3157F /* AccountHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountHeaderView.swift; sourceTree = "<group>"; };
+		6376700E230E75DC00F3157F /* AccountHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountHeaderView.xib; sourceTree = "<group>"; };
 		63A2C467230B997700799CF3 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		63A2C46E230B9A7300799CF3 /* APIClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = APIClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63A2C470230B9A7300799CF3 /* APIClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
@@ -230,6 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				6358C32C230B96700067AA87 /* Main.storyboard */,
+				6376700D230E75DC00F3157F /* AccountHeaderView.swift */,
+				6376700E230E75DC00F3157F /* AccountHeaderView.xib */,
 				63019A5C230BF07E00A3D3B6 /* PlantCell.swift */,
 				63019A5D230BF07E00A3D3B6 /* PlantCell.xib */,
 			);
@@ -250,6 +262,9 @@
 			isa = PBXGroup;
 			children = (
 				63226C28230D57CD00E73D42 /* AssetExtractor.swift */,
+				63767008230E75B100F3157F /* UIColor+DesignPalette.swift */,
+				63767009230E75B100F3157F /* UIColor+RGB.swift */,
+				63767007230E75B100F3157F /* UITableView+FooterSpinner.swift */,
 				63B3202A230E5B5A005F300F /* UIVIew+Layout.swift */,
 			);
 			path = Tools;
@@ -598,6 +613,7 @@
 				63767006230E632100F3157F /* StrechyVC.xib in Resources */,
 				6358C32E230B96700067AA87 /* Main.storyboard in Resources */,
 				63019A6A230BF40100A3D3B6 /* API.strings in Resources */,
+				63767010230E75DC00F3157F /* AccountHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,10 +749,13 @@
 				63019A70230BF40100A3D3B6 /* Result.swift in Sources */,
 				63019A58230BEFEF00A3D3B6 /* ListPlantsViewModel.swift in Sources */,
 				63019A67230BF3BE00A3D3B6 /* PlantRequest.swift in Sources */,
+				6376700B230E75B100F3157F /* UIColor+DesignPalette.swift in Sources */,
 				63019A6F230BF40100A3D3B6 /* Response.swift in Sources */,
 				63019A5E230BF07E00A3D3B6 /* PlantCell.swift in Sources */,
 				63B3202E230E5B5A005F300F /* UIVIew+Layout.swift in Sources */,
+				6376700A230E75B100F3157F /* UITableView+FooterSpinner.swift in Sources */,
 				63B32025230E57E1005F300F /* StrechyVC.swift in Sources */,
+				6376700F230E75DC00F3157F /* AccountHeaderView.swift in Sources */,
 				63019A6C230BF40100A3D3B6 /* APISession.swift in Sources */,
 				63019A69230BF3BE00A3D3B6 /* PlantImageRequest.swift in Sources */,
 				63226C29230D57CD00E73D42 /* AssetExtractor.swift in Sources */,
@@ -748,6 +767,7 @@
 				63019A72230BF40100A3D3B6 /* UploadRequestable.swift in Sources */,
 				63019A66230BF3BE00A3D3B6 /* PlantLoader.swift in Sources */,
 				63019A6D230BF40100A3D3B6 /* HTTPMethod.swift in Sources */,
+				6376700C230E75B100F3157F /* UIColor+RGB.swift in Sources */,
 				63019A64230BF3AF00A3D3B6 /* Plant.swift in Sources */,
 				63019A5A230BF01800A3D3B6 /* PlantCellViewModel.swift in Sources */,
 				63019A6E230BF40100A3D3B6 /* Requestable.swift in Sources */,

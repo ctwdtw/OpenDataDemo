@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PlantPresentable {
+protocol PlantPresentable: class {
   var id: String { get }
   var name: String { get }
   var location: String? { get }
@@ -16,8 +16,10 @@ protocol PlantPresentable {
   var plantImageData: Data? { get set }
 }
 
-protocol PlantDisplayLogicBindable {
+protocol PlantDisplayLogicBindable: class {
+  var plantImageData: Data? { get set }
   var onImageDataLoaded: ((Data) -> Void)? { get set }
+  var isLoading: Bool { get set }
   var onLoadingChange: ((Bool) -> Void)? { get set }
 }
 

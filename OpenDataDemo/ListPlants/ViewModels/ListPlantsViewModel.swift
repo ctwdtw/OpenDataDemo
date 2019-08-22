@@ -8,15 +8,22 @@
 
 import Foundation
 
-protocol ListPlantsDisplayLogicBindable {
+protocol ListPlantsDisplayLogicBindable: class {
+  var plantCellViewModels: [PlantCellViewModel] { get }
   var onInsertingPlantCellViewModels: (([Int]) -> Void)? { set get }
   var onFailedInsertingPlantCellViewModels: ((Error) -> Void)? { set get }
+  var isLoading: Bool { get }
   var onLoadingChange: ((Bool) -> Void)? { set get }
 }
 
-class ListPlantsViewModel: ListPlantsDisplayLogicBindable {
+protocol ListPlantsBusinessLogic {
+  func load()
+  func loadImage(for viewModel: PlantCellViewModel)
+}
+
+class ListPlantsViewModel: (ListPlantsDisplayLogicBindable & ListPlantsBusinessLogic) {
   
-  //MARK: -display logic binding port
+  //MARK: -display logic binding ports
   var onInsertingPlantCellViewModels: (([Int]) -> Void)?
   
   var onFailedInsertingPlantCellViewModels: ((Error) -> Void)?
@@ -54,11 +61,10 @@ class ListPlantsViewModel: ListPlantsDisplayLogicBindable {
     
     isLoading = true
     
-    defer {
-      self.isLoading = false
-    }
-    
     loader.load { [unowned self] (result) in
+      defer {
+        self.isLoading = false
+      }
       
       if let e = result.error {
         self.onFailedInsertingPlantCellViewModels?(e)
@@ -78,20 +84,19 @@ class ListPlantsViewModel: ListPlantsDisplayLogicBindable {
   }
   
   func loadImage(for viewModel: PlantCellViewModel) {
-    guard viewModel.isLoading == false else { return }
-    
-    viewModel.isLoading = true
-    
-    defer {
-      viewModel.isLoading = false
-    }
-    
     guard let url = viewModel.imageURL else {
       viewModel.plantImageData = AssetExtractor.imageData(imageName: R.image.imagePlaceHolder.name)
       return
     }
     
+    guard viewModel.isLoading == false else { return }
+    
+    viewModel.isLoading = true
+    
     loader.loadImage(from: url) { (result) in
+      defer {
+        viewModel.isLoading = false
+      }
       
       if let _ = result.error {
         viewModel.plantImageData = AssetExtractor.imageData(imageName: R.image.imagePlaceHolder.name)
