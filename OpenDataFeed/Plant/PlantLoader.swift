@@ -7,7 +7,7 @@
 //
 
 import Foundation
-final class PlantLoader: OpenDataLoader {
+class PlantLoader: OpenDataLoader {
   typealias DataObj = [Plant]
   
   // MARK:- dependency
@@ -17,7 +17,7 @@ final class PlantLoader: OpenDataLoader {
   var limit: Int
   var offset: Int
   
-  init(limit: Int, offset: Int) {
+  init(limit: Int = 20, offset: Int = 0) {
     self.limit = limit
     self.offset = offset
   }

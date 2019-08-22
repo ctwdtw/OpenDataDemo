@@ -14,5 +14,5 @@ protocol OpenDataLoader {
   
   associatedtype DataObj
   func load(completion: @escaping (Result<DataObj, Error>) -> Void)
-  
+  func loadImage(from url: URL, completion: @escaping (Result<Data, Error>) -> Void)
 }

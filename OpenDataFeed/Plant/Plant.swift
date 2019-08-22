@@ -8,13 +8,15 @@
 
 import Foundation
 
-struct Plant: Decodable {
+struct Plant {
   let id: Int
   let name: String
   let location: String?
   let feature: String?
   let imageURL: URL?
-  
+}
+
+extension Plant: Codable {
   enum CodingKeys: String, CodingKey {
     case id = "_id"
     case name = "F_Name_Ch"
@@ -39,5 +41,12 @@ struct Plant: Decodable {
       
     }
     
+  }
+}
+
+extension Plant {
+  /// quck init and for the sake of generating test data
+  init(id: Int) {
+    self.init(id: id, name: "plant\(id)", location: nil, feature: nil, imageURL: nil)
   }
 }
