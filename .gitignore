@@ -19,6 +19,6 @@ build/*
 xcuserdata
 
 #R.Swift
-*.generated.swift
+#*.generated.swift
 
 
