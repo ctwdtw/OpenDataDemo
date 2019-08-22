@@ -74,6 +74,7 @@
 		63A2C4D8230BCC0E00799CF3 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A2C4D7230BCC0E00799CF3 /* Plant.swift */; };
 		63B32025230E57E1005F300F /* StrechyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B32023230E57E1005F300F /* StrechyVC.swift */; };
 		63B3202E230E5B5A005F300F /* UIVIew+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B3202A230E5B5A005F300F /* UIVIew+Layout.swift */; };
+		63B7F717230ECE4000B45DC9 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B7F716230ECE4000B45DC9 /* UIViewController+Alert.swift */; };
 		CA46E55B94915BDB10476B30 /* Pods_OpenDataDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270B7F91228F1A7AD6DA6E80 /* Pods_OpenDataDemo.framework */; };
 		DD1C840FB160EC52850D116F /* libPods-OpenDataDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA95D650C6862114C762B84 /* libPods-OpenDataDemoTests.a */; };
 /* End PBXBuildFile section */
@@ -173,6 +174,7 @@
 		63A2C4D7230BCC0E00799CF3 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		63B32023230E57E1005F300F /* StrechyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrechyVC.swift; sourceTree = "<group>"; };
 		63B3202A230E5B5A005F300F /* UIVIew+Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIVIew+Layout.swift"; sourceTree = "<group>"; };
+		63B7F716230ECE4000B45DC9 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		82CBD908E50EBC2BC607D32F /* Pods-OpenDataDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenDataDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-OpenDataDemoTests/Pods-OpenDataDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		998A97AFBF357993C83946A3 /* Pods-OpenDataDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenDataDemo.release.xcconfig"; path = "Target Support Files/Pods-OpenDataDemo/Pods-OpenDataDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -266,6 +268,7 @@
 				63767009230E75B100F3157F /* UIColor+RGB.swift */,
 				63767007230E75B100F3157F /* UITableView+FooterSpinner.swift */,
 				63B3202A230E5B5A005F300F /* UIVIew+Layout.swift */,
+				63B7F716230ECE4000B45DC9 /* UIViewController+Alert.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -764,6 +767,7 @@
 				63019A62230BF39600A3D3B6 /* OpenDataRequestable.swift in Sources */,
 				63019A68230BF3BE00A3D3B6 /* PlantValue.swift in Sources */,
 				63019A71230BF40100A3D3B6 /* String+fill.swift in Sources */,
+				63B7F717230ECE4000B45DC9 /* UIViewController+Alert.swift in Sources */,
 				63019A72230BF40100A3D3B6 /* UploadRequestable.swift in Sources */,
 				63019A66230BF3BE00A3D3B6 /* PlantLoader.swift in Sources */,
 				63019A6D230BF40100A3D3B6 /* HTTPMethod.swift in Sources */,

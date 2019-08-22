@@ -82,6 +82,7 @@ class ListPlantsVC: StrechyVＣ, ListPlantsDisplayable {
   }
   
   func displayInsertPlantsFailed(error: Error) {
+    showSimpleAlert(error.localizedDescription, okTitle: "確認")
     print(error.localizedDescription)
   }
   
