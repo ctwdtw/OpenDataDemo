@@ -152,10 +152,18 @@ extension ListPlantsVC: UITableViewDataSource {
     let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.plantCell, for: indexPath)!
     let viewModel = listPlantsViewModel.plantCellViewModels[indexPath.row]
     
-    cell.bindDisplayLogic(viewModel)
+    //cell.bindDisplayLogic(viewModel)
+    //cell.plantCellViewModel = viewModel
+    //listPlantsViewModel.loadImage(for: viewModel)
     cell.display(viewModel)
-    cell.plantCellViewModel = viewModel
-    listPlantsViewModel.loadImage(for: viewModel)
+    if let url = viewModel.imageURL {
+      cell.loadingIndicator.startAnimating()
+      cell.plantImageView.loadImage(url: url, placeHolder: R.image.imagePlaceHolder()!) {
+        cell.loadingIndicator.stopAnimating()
+        
+      }
+    }
+    
     
     //loading
     if isScrollNearEnd(indexPath: indexPath) {
