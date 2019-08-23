@@ -12,6 +12,7 @@ class PlantLoader: OpenDataLoader {
   
   // MARK:- dependency
   var client = APISession.shared
+  private let cache = NSCache<NSString, NSData>()
   
   // MARK:- state and initializer
   var limit: Int
@@ -46,7 +47,14 @@ class PlantLoader: OpenDataLoader {
   
   func loadImage(from url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
     let rq = PlantImageRequest(url: url)
-    client.send(rq) { (response) in
+    
+    if let nsdata = cache.object(forKey: NSString(string: url.absoluteString)) {
+      let imageData = Data(referencing: nsdata)
+      completion(Result.success(imageData))
+      return
+    }
+    
+    client.send(rq) { [weak self] (response) in
       
       if let e = response.result.error {
         completion(Result.failed(e))
@@ -54,6 +62,7 @@ class PlantLoader: OpenDataLoader {
       }
       
       if let value = response.result.value {
+        self?.cache.setObject(NSData(data: value), forKey: NSString(string: url.absoluteString))
         completion(Result.success(value))
         return
       }
