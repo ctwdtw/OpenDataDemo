@@ -18,7 +18,6 @@ protocol ListPlantsDisplayLogicBindable: class {
 
 protocol ListPlantsBusinessLogic {
   func load()
-  func loadImage(for viewModel: PlantCellViewModel)
 }
 
 class ListPlantsViewModel: (ListPlantsDisplayLogicBindable & ListPlantsBusinessLogic) {
@@ -82,36 +81,4 @@ class ListPlantsViewModel: (ListPlantsDisplayLogicBindable & ListPlantsBusinessL
     }
   
   }
-  
-  func loadImage(for viewModel: PlantCellViewModel) {
-    guard let url = viewModel.imageURL else {
-      viewModel.plantImageData = AssetExtractor.imageData(imageName: R.image.imagePlaceHolder.name)
-      return
-    }
-    
-    guard viewModel.isLoading == false else { return }
-    
-    viewModel.isLoading = true
-    
-    loader.loadImage(from: url) { (result) in
-      defer {
-        viewModel.isLoading = false
-      }
-      
-      if let _ = result.error {
-        viewModel.plantImageData = AssetExtractor.imageData(imageName: R.image.imagePlaceHolder.name)
-        return
-      }
-      
-      if let data = result.value {
-        viewModel.plantImageData = data
-        return
-      }
-      
-      assertionFailure()
-      
-    }
-  
-  }
-  
 }

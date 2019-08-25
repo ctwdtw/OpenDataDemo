@@ -8,12 +8,7 @@
 
 import UIKit
 
-protocol PlantsDisplayable {
-  func displayLoadingIndicator(isLoading: Bool)
-  func displayImageData(_ data: Data)
-}
-
-class PlantCell: UITableViewCell, PlantsDisplayable {
+class PlantCell: UITableViewCell {
   @IBOutlet weak var nameLabel: UILabel! {
     didSet {
       nameLabel.numberOfLines = 0
@@ -41,49 +36,43 @@ class PlantCell: UITableViewCell, PlantsDisplayable {
     }
   }
   
-  @IBOutlet weak var plantImageView: UIImageView!
   
-  @IBOutlet weak var loadingIndicator: UIActivityIndicatorView! {
+  @IBOutlet weak var imageViewContainer: UIView! {
     didSet {
-      loadingIndicator.hidesWhenStopped = true
+      let imageView = UIImageView(frame: .zero)
+      imageView.fill(on: imageViewContainer)
+      plantImageView = imageView
     }
   }
   
-  var plantCellViewModel: (PlantPresentable & PlantDisplayLogicBindable)?
+  var plantImageView: UIImageView?
   
   func display(_ viewModel: PlantPresentable) {
     nameLabel.text = viewModel.name
     locationLabel.text = viewModel.location
     featureLabel.text = viewModel.feature
+    
+    if let url = viewModel.imageURL {
+      plantImageView?.loadImage(url: url, placeHolder: R.image.imagePlaceHolder()!)
+    
+    } else {
+      plantImageView?.image = R.image.imagePlaceHolder()!
+    
+    }
+  
     setNeedsLayout()
   }
   
-  func bindDisplayLogic(_ viewModel: PlantDisplayLogicBindable) {
-    viewModel.onLoadingChange = displayLoadingIndicator(isLoading:)
-    viewModel.onImageDataLoaded = displayImageData(_:)
-  }
-  
-  //MARK: - dispaly logic
-  func displayLoadingIndicator(isLoading: Bool) {
-    if isLoading {
-      loadingIndicator.startAnimating()
-      
-    } else {
-      loadingIndicator.stopAnimating()
-      
-    }
-  }
-  
-  func displayImageData(_ data: Data) {
-    plantImageView.image = UIImage(data: data)
-    plantCellViewModel?.isLoading = false
+  func prepareNewImageView() {
+    plantImageView?.removeFromSuperview()
+    plantImageView = nil
+    plantImageView = UIImageView(frame: .zero)
+    plantImageView?.fill(on: imageViewContainer)
   }
   
   override func prepareForReuse() {
     super.prepareForReuse()
-    plantCellViewModel?.onImageDataLoaded = nil
-    plantCellViewModel?.onLoadingChange = nil
-    plantImageView.image = nil
+    prepareNewImageView()
   }
   
 }

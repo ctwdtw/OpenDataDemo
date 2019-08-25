@@ -82,7 +82,7 @@ class ListPlantsVC: StrechyVＣ, ListPlantsDisplayable {
   }
   
   func displayInsertPlantsFailed(error: Error) {
-    showSimpleAlert(error.localizedDescription, okTitle: "確認")
+    //showSimpleAlert(error.localizedDescription, okTitle: "確認")
     print(error.localizedDescription)
   }
   
@@ -151,19 +151,7 @@ extension ListPlantsVC: UITableViewDataSource {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.plantCell, for: indexPath)!
     let viewModel = listPlantsViewModel.plantCellViewModels[indexPath.row]
-    
-    //cell.bindDisplayLogic(viewModel)
-    //cell.plantCellViewModel = viewModel
-    //listPlantsViewModel.loadImage(for: viewModel)
     cell.display(viewModel)
-    if let url = viewModel.imageURL {
-      cell.loadingIndicator.startAnimating()
-      cell.plantImageView.loadImage(url: url, placeHolder: R.image.imagePlaceHolder()!) {
-        cell.loadingIndicator.stopAnimating()
-        
-      }
-    }
-    
     
     //loading
     if isScrollNearEnd(indexPath: indexPath) {

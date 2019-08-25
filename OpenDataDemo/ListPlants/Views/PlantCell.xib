@@ -18,13 +18,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="119.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Eqt-lu-LGu">
-                        <rect key="frame" x="8" y="8" width="80" height="80"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="80" id="oYP-9Q-tdT"/>
-                            <constraint firstAttribute="width" secondItem="Eqt-lu-LGu" secondAttribute="height" id="wHr-Hn-Ouf"/>
-                        </constraints>
-                    </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QEx-Dx-Beu">
                         <rect key="frame" x="96" y="8" width="216" height="103.5"/>
                         <subviews>
@@ -48,31 +41,32 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="izP-vA-Jgk">
-                        <rect key="frame" x="38" y="38" width="20" height="20"/>
-                    </activityIndicatorView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vcb-OP-8wN">
+                        <rect key="frame" x="8" y="8" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="Pga-IK-jVz"/>
+                            <constraint firstAttribute="width" secondItem="vcb-OP-8wN" secondAttribute="height" id="RWa-wz-e9f"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="QEx-Dx-Beu" firstAttribute="leading" secondItem="Eqt-lu-LGu" secondAttribute="trailing" constant="8" id="8uY-QL-TMx"/>
-                    <constraint firstItem="izP-vA-Jgk" firstAttribute="centerX" secondItem="Eqt-lu-LGu" secondAttribute="centerX" id="BhZ-xV-LwM"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="vcb-OP-8wN" secondAttribute="bottom" priority="999" constant="8" id="75I-P5-jFs"/>
+                    <constraint firstItem="vcb-OP-8wN" firstAttribute="top" secondItem="QEx-Dx-Beu" secondAttribute="top" priority="999" id="E7g-U6-gcS"/>
                     <constraint firstAttribute="bottom" secondItem="QEx-Dx-Beu" secondAttribute="bottom" constant="8" id="L4k-Ay-6Oc"/>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Eqt-lu-LGu" secondAttribute="bottom" priority="999" constant="8" id="Noi-ZH-aNy"/>
-                    <constraint firstItem="Eqt-lu-LGu" firstAttribute="top" secondItem="wzR-b7-fZf" secondAttribute="top" constant="8" id="bX4-LQ-tMu"/>
+                    <constraint firstItem="vcb-OP-8wN" firstAttribute="top" secondItem="wzR-b7-fZf" secondAttribute="top" constant="8" id="RBG-XO-h8V"/>
                     <constraint firstAttribute="trailing" secondItem="QEx-Dx-Beu" secondAttribute="trailing" constant="8" id="ipd-cP-0ua"/>
-                    <constraint firstItem="Eqt-lu-LGu" firstAttribute="leading" secondItem="wzR-b7-fZf" secondAttribute="leading" constant="8" id="tkm-1l-V5B"/>
-                    <constraint firstItem="izP-vA-Jgk" firstAttribute="centerY" secondItem="Eqt-lu-LGu" secondAttribute="centerY" id="wJS-cy-RM0"/>
-                    <constraint firstItem="QEx-Dx-Beu" firstAttribute="top" secondItem="Eqt-lu-LGu" secondAttribute="top" priority="999" id="z50-do-LMS"/>
+                    <constraint firstItem="QEx-Dx-Beu" firstAttribute="leading" secondItem="vcb-OP-8wN" secondAttribute="trailing" constant="8" id="jkq-Bq-7tc"/>
+                    <constraint firstItem="vcb-OP-8wN" firstAttribute="leading" secondItem="wzR-b7-fZf" secondAttribute="leading" constant="8" id="xxI-zh-fMm"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="kDf-0U-LuU"/>
             <connections>
                 <outlet property="featureLabel" destination="roY-tR-FpU" id="WJO-4J-kvD"/>
-                <outlet property="loadingIndicator" destination="izP-vA-Jgk" id="ikq-lG-VBe"/>
+                <outlet property="imageViewContainer" destination="vcb-OP-8wN" id="Ftb-cd-O8N"/>
                 <outlet property="locationLabel" destination="mw9-wd-LNv" id="2Hg-i7-Q5y"/>
                 <outlet property="nameLabel" destination="iUH-tP-wW3" id="usj-93-RXR"/>
-                <outlet property="plantImageView" destination="Eqt-lu-LGu" id="PSe-yy-9gz"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="141.96428571428569"/>
+            <point key="canvasLocation" x="127.53623188405798" y="116.51785714285714"/>
         </tableViewCell>
     </objects>
 </document>
