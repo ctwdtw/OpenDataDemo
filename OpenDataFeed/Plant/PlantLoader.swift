@@ -49,7 +49,7 @@ class PlantLoader: OpenDataLoader {
     let rq = PlantImageRequest(url: url)
     
     if let nsdata = cache.object(forKey: NSString(string: url.absoluteString)) {
-      let imageData = Data(referencing: nsdata)
+      let imageData = nsdata as Data
       completion(Result.success(imageData))
       return
     }
@@ -61,9 +61,9 @@ class PlantLoader: OpenDataLoader {
         return
       }
       
-      if let value = response.result.value {
-        self?.cache.setObject(NSData(data: value), forKey: NSString(string: url.absoluteString))
-        completion(Result.success(value))
+      if let data = response.result.value {
+        self?.cache.setObject(data as NSData, forKey: NSString(string: url.absoluteString))
+        completion(Result.success(data))
         return
       }
       
