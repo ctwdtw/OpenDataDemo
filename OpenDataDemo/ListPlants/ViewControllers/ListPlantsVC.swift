@@ -69,9 +69,9 @@ class ListPlantsVC: StrechyVＣ, ListPlantsDisplayable {
   
   /// bind UI displaylogic of views with ports of related properties on viewModel
   func bindDisplayLogic() {
-    listPlantsViewModel.onLoadingChange = displayLoadingIndicator(isLoading:)
-    listPlantsViewModel.onInsertingPlantCellViewModels = displayInsertPlantsSuccess(idxs:)
-    listPlantsViewModel.onFailedInsertingPlantCellViewModels = displayInsertPlantsFailed(error:)
+    listPlantsViewModel.onLoadingChange = { [weak self] in self?.displayLoadingIndicator(isLoading:$0) }
+    listPlantsViewModel.onInsertingPlantCellViewModels = { [weak self] in self?.displayInsertPlantsSuccess(idxs:$0) }
+    listPlantsViewModel.onFailedInsertingPlantCellViewModels = { [weak self] in self?.displayInsertPlantsFailed(error:$0) }
   }
   
   //MARK: - UI display logics
